@@ -14,6 +14,7 @@ services:
       - JWT_SECRET=${BACKEND_JWT_SECRET}
     networks: 
       - proxy
+#      - backend
     labels:
       - traefik.enable=true
       - traefik.http.routers.menstracker_backend.rule=Host(`${BACKEND_DOMAIN}`)
@@ -28,6 +29,7 @@ services:
     restart: "unless-stopped"
     networks:
       - proxy
+#      - backend
     labels:
       - traefik.enable=true
       - traefik.http.routers.menstracker.rule=Host(`${FRONTEND_DOMAIN}`)
@@ -38,3 +40,5 @@ services:
 networks:
   proxy:
     external: true
+#  backend:
+#    driver: bridge
