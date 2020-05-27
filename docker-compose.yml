@@ -8,12 +8,14 @@ services:
     restart: "unless-stopped"
     environment: 
       - PORT=${BACKEND_PORT}
-      - SQLITE_DB={BACKEND_SQLITE_DB_PATH}
+      - SQLITE_DB=${BACKEND_SQLITE_DB_PATH}${BACKEND_SQLITE_DB_NAME}
       - ADMIN_EMAIL=${ADMIN_EMAIL}
       - HASH_SALT_ROUNDS=${BACKEND_HASH_SALT_ROUNDS}
       - JWT_SECRET=${BACKEND_JWT_SECRET}
     networks: 
       - proxy
+    volumes:
+      - ./${BACKEND_SQLITE_DB_NAME}:/server/backend/src/db/${BACKEND_SQLITE_DB_NAME}
 #      - backend
     labels:
       - traefik.enable=true
