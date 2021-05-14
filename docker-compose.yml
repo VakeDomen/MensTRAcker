@@ -15,9 +15,7 @@ services:
     networks: 
       - proxy
     volumes:
-      - type: bind
-        source: ./${BACKEND_SQLITE_DB_NAME}
-        target: /server/backend/src/db/${BACKEND_SQLITE_DB_NAME}
+      - ./${BACKEND_SQLITE_DB_NAME}:/server/backend/src/db/${BACKEND_SQLITE_DB_NAME}
 #      - backend
     labels:
       - traefik.enable=true
