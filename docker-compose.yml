@@ -15,15 +15,17 @@ services:
     networks: 
       - proxy
     volumes:
-      - ./${BACKEND_SQLITE_DB_NAME}:/server/backend/src/db/${BACKEND_SQLITE_DB_NAME}
+      - type: bind
+        source: ./${BACKEND_SQLITE_DB_NAME}
+        target: /server/backend/src/db/${BACKEND_SQLITE_DB_NAME}
 #      - backend
     labels:
       - traefik.enable=true
-      - traefik.http.routers.planktracker_backend.rule=Host(`${BACKEND_DOMAIN}`)
-      - traefik.http.routers.planktracker_backend.entrypoints=websecure
-      - traefik.http.routers.planktracker_backend.tls=true
-      - traefik.http.routers.planktracker_backend.tls.certresolver=le
-      - traefik.http.services.planktracker_backend.loadbalancer.server.port=3000
+      - traefik.http.routers.menstracker_backend.rule=Host(`${BACKEND_DOMAIN}`)
+      - traefik.http.routers.menstracker_backend.entrypoints=websecure
+      - traefik.http.routers.menstracker_backend.tls=true
+      - traefik.http.routers.menstracker_backend.tls.certresolver=le
+      - traefik.http.services.menstracker_backend.loadbalancer.server.port=3000
   frontend:
     build:
       context: .
@@ -34,10 +36,10 @@ services:
 #      - backend
     labels:
       - traefik.enable=true
-      - traefik.http.routers.planktracker.rule=Host(`${FRONTEND_DOMAIN}`)
-      - traefik.http.routers.planktracker.entrypoints=websecure
-      - traefik.http.routers.planktracker.tls=true
-      - traefik.http.routers.planktracker.tls.certresolver=le
+      - traefik.http.routers.menstracker.rule=Host(`${FRONTEND_DOMAIN}`)
+      - traefik.http.routers.menstracker.entrypoints=websecure
+      - traefik.http.routers.menstracker.tls=true
+      - traefik.http.routers.menstracker.tls.certresolver=le
 
 networks:
   proxy:
