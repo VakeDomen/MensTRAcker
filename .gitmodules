@@ -1,6 +1,0 @@
-[submodule "MensTRAckerBackend"]
-	path = MensTRAckerBackend
-	url = https://github.com/VakeDomen/MensTRAckerBackend.git
-[submodule "MensTRAckerFrontend"]
-	path = MensTRAckerFrontend
-	url = https://github.com/VakeDomen/MensTRAckerFrontend.git
